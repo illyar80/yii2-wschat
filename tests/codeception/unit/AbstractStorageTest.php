@@ -3,27 +3,17 @@ namespace tests\codeception\unit;
 
 use yii\codeception\TestCase;
 use jones\wschat\components\AbstractStorage;
+use jones\wschat\components\DbStorage;
 
 class AbstractStorageTest extends TestCase
 {
     /**
      * @covers \jones\wschat\components\AbstractStorage::factory
      */
-    public function testMongoStorage()
-    {
-        $storage = AbstractStorage::factory('mongodb');
-        $this->assertInstanceOf('\jones\wschat\collections\History', $storage);
-        $storage = AbstractStorage::factory();
-        $this->assertInstanceOf('\jones\wschat\collections\History', $storage);
-    }
-
-    /**
-     * @covers \jones\wschat\components\AbstractStorage::factory
-     */
     public function testPgsqlStorage()
     {
         $storage = AbstractStorage::factory('pgsql');
-        $this->assertInstanceOf('\jones\wschat\components\DbStorage', $storage);
+        $this->assertInstanceOf(DbStorage::class, $storage);
     }
 
     /**
@@ -32,6 +22,6 @@ class AbstractStorageTest extends TestCase
     public function testMysqlStorage()
     {
         $storage = AbstractStorage::factory('mysql');
-        $this->assertInstanceOf('\jones\wschat\components\DbStorage', $storage);
+        $this->assertInstanceOf(DbStorage::class, $storage);
     }
 }

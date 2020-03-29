@@ -23,13 +23,9 @@ abstract class AbstractStorage
     public static function factory($storage = null)
     {
         if (empty($storage)) {
-            $components = Yii::$app->getComponents();
-            $storage = !empty($components['mongodb']) ? 'mongodb' : Yii::$app->getDb()->driverName;
+            $storage = Yii::$app->getDb()->driverName;
         }
         switch ($storage) {
-            case 'mongodb':
-                $class = new History();
-                break;
             default:
                 $class = new DbStorage();
         }
