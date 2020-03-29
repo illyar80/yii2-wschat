@@ -39,7 +39,7 @@ class ChatWidget extends Widget
     public function run()
     {
         $this->registerJsOptions();
-        Yii::$app->assetManager->publish($this->imgPath);
+        Yii::$app->getAssetManager()->publish($this->imgPath);
         return $this->render($this->view, [
             'auth' => $this->auth,
             'add_room' => $this->add_room
@@ -58,7 +58,7 @@ class ChatWidget extends Widget
             'var currentUserId = '.($this->user_id ?: 0).';',
             'var port = '.$this->port.';',
             'var chatList = '.Json::encode($this->chatList).';',
-            'var imgPath = "'.Yii::$app->assetManager->getPublishedUrl($this->imgPath).'";',
+            'var imgPath = "'.Yii::$app->getAssetManager()->getPublishedUrl($this->imgPath).'";',
         ];
         $this->getView()->registerJs(implode(' ', $opts), View::POS_BEGIN);
     }

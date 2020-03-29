@@ -4,7 +4,6 @@
  * @var chatList array of objects set in ChatWidget
  */
 $(document).ready(function() {
-    $('body').tooltip({selector: '[data-toggle="tooltip"]'});
     var rooms = new Chat.Collections.Rooms(chatList);
     var roomListView = new Chat.Views.ChatRoomList({collection: rooms});
     roomListView.render();
