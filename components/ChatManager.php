@@ -11,7 +11,7 @@ use jones\wschat\collections\History;
 class ChatManager
 {
     /** @var \jones\wschat\components\User[] */
-    private $users = [];
+    protected $users = [];
     /** @var string a namespace of class to get user instance */
     public $userClassName = null;
 

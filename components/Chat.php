@@ -13,13 +13,13 @@ use Ratchet\MessageComponentInterface;
 class Chat implements MessageComponentInterface
 {
     /** @var ConnectionInterface[] */
-    private $clients = [];
+    protected $clients = [];
     /** @var \jones\wschat\components\ChatManager */
-    private $cm = null;
+    protected $cm = null;
     /**
      * @var array list of available requests
      */
-    private $requests = [
+    protected $requests = [
         'auth', 'message'
     ];
 
@@ -87,7 +87,7 @@ class Chat implements MessageComponentInterface
      * @param ConnectionInterface $conn
      * @return string
      */
-    private function getResourceId(ConnectionInterface $conn)
+    protected function getResourceId(ConnectionInterface $conn)
     {
         return $conn->resourceId;
     }
@@ -101,7 +101,7 @@ class Chat implements MessageComponentInterface
      * @param $data
      * @return void
      */
-    private function authRequest($rid, array $data)
+    protected function authRequest($rid, array $data)
     {
         $chatId = $data['cid'];
         Yii::info('Auth request from rid: '.$rid.' and chat: '.$chatId, 'chat');
@@ -144,7 +144,7 @@ class Chat implements MessageComponentInterface
      * @param array $data
      * @return void
      */
-    private function messageRequest($rid, array $data)
+    protected function messageRequest($rid, array $data)
     {
         Yii::info('Message from: '.$rid, 'chat');
         $chat = $this->cm->getUserChat($rid);
@@ -171,7 +171,7 @@ class Chat implements MessageComponentInterface
      * @access public
      * @param $rid
      */
-    private function closeRequest($rid)
+    protected function closeRequest($rid)
     {
         //get user for closed connection
         $requestUser = $this->cm->getUserByRid($rid);
