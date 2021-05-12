@@ -1,5 +1,5 @@
 {
-    "name": "joni-jones/yii2-wschat",
+    "name": "illyar80/yii2-wschat",
     "description": "Online chat based on web sockets and ratchet php",
     "type": "yii2-extension",
     "keywords": ["yii2","extension","backbone","ratchet","websocket","chat"],
